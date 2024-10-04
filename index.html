@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .container{
+            border: 2px solid gray;
+            margin-left: 25%;
+            margin-right: 25%;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 10px;
+            background-color: azure;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Palindrome Checker</h1>
+        <p>Enter a word or phrase to check if it's a palindrome:</p>
+        <input type="text" id="inputText" placeholder="Type here...">
+        <button onclick="checkPalindrome()">Check</button>
+    
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function checkPalindrome() {
+            let input = document.getElementById("inputText").value.toLowerCase();
+            let cleanedInput = "";
+            
+            
+            for (let i = 0; i < input.length; i++) {
+                if (isLetter(input[i])) {
+                    cleanedInput += input[i];
+                }
+            }
+
+            let reversedInput = cleanedInput.split('').reverse().join('');
+
+            if (cleanedInput === reversedInput && cleanedInput.length > 0) {
+                document.getElementById("result").textContent = `"${input}" is a palindrome!`;
+            } else {
+                document.getElementById("result").textContent = `"${input}" is not a palindrome.`;
+            }
+        }
+
+        
+        function isLetter(char) {
+            return char >= 'a' && char <= 'z';
+        }
+    </script>
+
+</body>
+</html>
